@@ -7,20 +7,21 @@ def f(x):
 
 # Define the signed log transformation function
 def signed_log(x):
+    """Applies a signed logarithmic transformation to handle both positive and negative values."""
     return np.sign(x) * np.log1p(np.abs(x))
 
 # Generate 2000 x values from -100 to 100, excluding 0 to avoid division by zero
 x = np.linspace(-100, 100, 2000)
 x = x[x != 0]  # Remove 0 from the array to avoid division by zero
 
-# Calculate the corresponding y values
+# Calculate the corresponding y values for f(x)
 y = f(x)
 
 # Apply signed log transformation to x and y values
 x_log = signed_log(x)
 y_log = signed_log(y)
 
-# Create the plot
+# Create the plot with a specified figure size
 plt.figure(figsize=(5, 4))  # Adjusting figure size to make it more square-like
 
 # Plot the function with different colors for positive and negative x values
@@ -39,15 +40,14 @@ plt.axvline(0, color='black', linewidth=1)
 plt.xlabel(r'$\Delta t$', fontsize=14)
 plt.ylabel(r'$\Delta s$', fontsize=14)
 
-# Move the xlabel to the top
+# Move the xlabel to the top and ylabel to the right
 plt.gca().xaxis.set_label_coords(1, 0.47)
-# Move the ylabel to the right
 plt.gca().yaxis.set_label_coords(0.49, 1)
 
-# Automatically set axis limits
+# Automatically adjust axis limits
 plt.autoscale()
 
-# Add text labels "LTP" and "LTD" closer to the curve center
+# Add text labels for the regions of potentiation and depression
 plt.text(3, 1.2, 'potentiation', color='red', fontsize=16, fontweight='bold', ha='center')
 plt.text(-3, -1.2, 'depression', color='#5654FC', fontsize=16, fontweight='bold', ha='center')
 
@@ -57,13 +57,13 @@ plt.gca().set_aspect('equal', adjustable='box')
 # Remove grid
 plt.grid(False)
 
-# Remove figure spines (outlines)
+# Remove figure spines (outlines) for a clean look
 plt.gca().spines['top'].set_visible(False)
 plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['left'].set_visible(False)
 plt.gca().spines['bottom'].set_visible(False)
 
-# Remove ticks and tick labels
+# Remove ticks and tick labels for a minimalistic appearance
 plt.xticks([])  # Remove x-axis ticks
 plt.yticks([])  # Remove y-axis ticks
 

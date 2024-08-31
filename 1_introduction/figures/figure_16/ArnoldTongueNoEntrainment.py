@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from scipy.signal import find_peaks
-import Utils as ut  # Ensure this custom utility module is available and correctly implemented
+import Utils as ut  # Custom utility module, ensure it is available and correctly implemented
 
 # Set parameters for the signals
 frequency_vis = 11  # Frequency in Hz for the visual signal (entrainment)

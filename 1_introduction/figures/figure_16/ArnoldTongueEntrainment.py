@@ -8,19 +8,20 @@ from scipy.signal import find_peaks
 # Determine the current script's directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Go two folders up
+# Go two folders up in the directory hierarchy
 two_folders_up = os.path.abspath(os.path.join(current_dir, '../../'))
 
-# Add the two-folders-up path to the system path
+# Add the two-folders-up path to the system path to import custom utilities
 sys.path.insert(0, two_folders_up)
 
-import Utils as ut  # Custom utility module, ensure this is correctly implemented and accessible
+# Import the custom utility module 'Utils', ensure this module is implemented correctly
+import Utils as ut
 
 # Set up parameters for the low-frequency signal
 frequency = 9  # Frequency in Hz for the low-frequency sinusoidal signal
 amplitude = 0.9  # Scaling factor for visualizing the amplitude of the signals
 
-# Create a time vector using a custom utility function
+# Create a time vector using a custom utility function from the 'Utils' module
 # Generates a time vector from 0 to 0.5 seconds, sampled at 1000 Hz
 t = ut.create_time_scale(500, 1000, 's')
 
