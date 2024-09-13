@@ -28,8 +28,8 @@ ax.plot(t[:len(t)//2], signal_before3[:len(t)//2] - 2, color='black', linewidth=
 ax.plot(t[len(t)//2:], signal_after1[len(t)//2:], color='#5654FC', linewidth=2)
 ax.plot(t[len(t)//2:], signal_after2[len(t)//2:] - 1, color='#5654FC', linewidth=2)
 ax.plot(t[len(t)//2:], signal_after3[len(t)//2:] - 2, color='#5654FC', linewidth=2)
-
-# Add vertical line to indicate phase reset point at π
+#
+# # Add vertical line to indicate phase reset point at π
 ax.axvline(x=np.pi, color='#5654FC', linewidth=2)
 
 # Remove axis for a cleaner visual representation
