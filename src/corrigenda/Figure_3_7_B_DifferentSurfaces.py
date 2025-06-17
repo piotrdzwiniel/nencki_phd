@@ -33,8 +33,8 @@ values_cond2 = (values_cond2 - total_min) / (total_max - total_min)
 
 
 # # Choosse values only between 0.6 and 1.0
-values_cond1 = values_cond1[(values_cond1 >= 0.5) & (values_cond1 <= 1.0)]
-values_cond2 = values_cond2[(values_cond2 >= 0.5) & (values_cond2 <= 1.0)]
+# values_cond1 = values_cond1[(values_cond1 >= 0.5) & (values_cond1 <= 1.0)]
+# values_cond2 = values_cond2[(values_cond2 >= 0.5) & (values_cond2 <= 1.0)]
 
 weights1 = np.ones_like(values_cond1) / len(values_cond1)
 weights2 = np.ones_like(values_cond2) / len(values_cond2)
@@ -59,7 +59,7 @@ plt.figure(figsize=(5, 3), dpi=150)  # Small, high-resolution figure
 sns.kdeplot(data=df2, x='data', color=colors[1], alpha=0.75, label='Rectangle', linewidth=2, cumulative=True, weights='weights')
 sns.kdeplot(data=df1, x='data', color=colors[0], alpha=0.75, label='Elipsoid', linewidth=2, cumulative=True, weights='weights')
 
-plt.title(f'Electrodes with Identical Surfaces', pad=20)
+plt.title(f'Electrodes with Different Surfaces', pad=20)
 plt.ylabel('Cumulative Density')
 
 # Convert y-axis values to percentages
@@ -75,5 +75,5 @@ plt.ylim(0, 1.1)
 
 plt.tight_layout()
 plt.legend(frameon=False, loc='lower right')
-# plt.savefig(f'Corrigenda Figure 3-7B DifferentSurfaces.png', dpi=300, bbox_inches='tight', transparent=True)
-plt.show()
+plt.savefig(f'Corrigenda Figure 3-7B DifferentSurfaces.png', dpi=300, bbox_inches='tight', transparent=True)
+# plt.show()
