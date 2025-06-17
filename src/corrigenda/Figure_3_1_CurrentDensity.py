@@ -11,6 +11,14 @@ X, Y = np.meshgrid(current_amplitude, area)
 # Calculate the current density (mA/cm²)
 Z = X / Y
 
+# --- NEW: Print current density for specific values ---
+specific_current = 0.3  # mA
+specific_area = 3.0     # cm²
+specific_density = specific_current / specific_area
+print(f"Current Density for I = {specific_current} mA and A = {specific_area} cm²: {specific_density:.3f} mA/cm²")
+
+exit()
+
 # Create the filled contour plot, scaling the colors between 0 and 5
 plt.figure(figsize=(4, 5))
 cp = plt.contourf(X, Y, Z, levels=np.linspace(0, 5, 1000), cmap='jet', vmin=0, vmax=5)

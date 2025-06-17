@@ -211,6 +211,13 @@ def extract_x_for_y(contour, y_values):
 y_values = [300, 200, 100]
 
 # Extract the x-values corresponding to specific y-values
+extracted_x = extract_x_for_y(contour_75, y_values)
+
+# Print results
+for y, x_vals in extracted_x.items():
+    print(f"75 %% Y = {y} µA -> X-values (Durations): {np.mean(x_vals):.2f} ms")
+
+# Extract the x-values corresponding to specific y-values
 extracted_x = extract_x_for_y(contour_50, y_values)
 
 # Print results
@@ -225,16 +232,32 @@ for y, x_vals in extracted_x.items():
 #     print(f"90 %% Y = {y} µA -> X-values (Durations): {np.mean(x_vals):.2f} ms")
 
 
-contour_5 = ax.contour(D_grid, A_grid, Z, levels=[10], colors='white', linestyles='dashed',
+# === 10% ===
+
+contour_10 = ax.contour(D_grid, A_grid, Z, levels=[10], colors='white', linestyles='dashed',
                         linewidths=2)
-ax.clabel(contour_5, fmt='5%%', inline=True, fontsize=12)
+ax.clabel(contour_10, fmt='10%%', inline=True, fontsize=12)
 
 # Extract the x-values corresponding to specific y-values
-extracted_x = extract_x_for_y(contour_5, y_values)
+extracted_x = extract_x_for_y(contour_10, y_values)
 
 # Print results
 for y, x_vals in extracted_x.items():
-    print(f"5 %% Y = {y} µA -> X-values (Durations): {np.mean(x_vals):.2f} ms")
+    print(f"10 %% Y = {y} µA -> X-values (Durations): {np.mean(x_vals):.2f} ms")
+
+# === 10% ===
+
+
+# contour_5 = ax.contour(D_grid, A_grid, Z, levels=[5], colors='white', linestyles='dashed',
+#                         linewidths=2)
+# ax.clabel(contour_5, fmt='5%%', inline=True, fontsize=12)
+#
+# # Extract the x-values corresponding to specific y-values
+# extracted_x = extract_x_for_y(contour_5, y_values)
+#
+# # Print results
+# for y, x_vals in extracted_x.items():
+#     print(f"5 %% Y = {y} µA -> X-values (Durations): {np.mean(x_vals):.2f} ms")
 ##############################################################################################
 
 plt.tight_layout()

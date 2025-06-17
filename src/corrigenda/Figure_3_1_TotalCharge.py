@@ -31,6 +31,16 @@ def total_charge(d, A):
 
 charge_per_pulse = total_charge(Y, X) * 10**6
 
+# --- NEW: Print charge for specific values ---
+specific_current = 0.3  # mA
+specific_duration = 0.1  # s
+A_uA = specific_current * 1000
+d_ms = specific_duration * 1000
+charge_value = total_charge(d_ms, A_uA)
+print(f"Total charge for I = {specific_current} mA and duration = {specific_duration} s: {charge_value * 135:.2f} µC")
+
+exit()
+
 # Create the filled contour plot for charge per pulse (µC)
 plt.figure(figsize=(4, 5))
 cp = plt.contourf(X, Y, charge_per_pulse, levels=np.linspace(0, 90, 90), cmap='jet', vmin=0, vmax=90)

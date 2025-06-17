@@ -35,6 +35,25 @@ data = {
 df = pd.DataFrame(data)
 
 
+def total_charge(d, A):
+    # d in ms, A in µA
+    # Convert A (µA to A): A * 1e-6
+    # Convert d (ms to s): d * 1e-3
+    # Charge (Coulombs) for biphasic pulse: Q = I * t * 2 phases
+    # Q_coul = (A * 1e-6) * (d * 1e-3) * 2
+    # Convert to µC:
+    # Q_uC = Q_coul * 1e6
+
+    # === Pulse parameters ===
+    I_pp = A / 1e6  # Peak-to-peak current in amperes (100 µA)
+    I_peak = I_pp / 2  # Peak current in amperes
+    T_pulse = d / 1e3  # Total pulse duration in seconds (100 ms)
+    f = 1 / T_pulse  # Frequency in Hz (assuming full sinusoid fits in pulse duration)
+
+    Q_pulse_analytic_uC = (2 * I_peak) / (np.pi * f) * 1e6
+    return Q_pulse_analytic_uC
+
+
 # Naka-Rushton function (single-factor model) using total charge to model nonlinear responses
 def naka_rushton(inputs, r_max, sigma, n, r_base):
     """
@@ -52,25 +71,11 @@ def naka_rushton(inputs, r_max, sigma, n, r_base):
     - float: The computed response value.
     """
 
-    duration, amplitude = inputs  # Unpack input values
-
-    # Compute peak current (mA) assuming a biphasic waveform
-    I_peak = amplitude / 2
-
-    # Compute half the pulse duration (ms)
-    t_half_phase = duration / 2
-
-    # Compute RMS (Root Mean Square) current
-    I_RMS = I_peak / np.sqrt(2)
-
-    # Calculate charge per phase (Coulombs)
-    charge_per_phase = I_RMS * t_half_phase  # Charge = I_RMS * t_half_phase
-
-    # Compute total charge per pulse (sum of both phases, in microCoulombs)
-    charge_per_pulse = 2 * charge_per_phase
+    d, A = inputs  # Unpack inputs: pulse duration and amplitude
+    Q = total_charge(d, A)  # Calculate total charge per pulse
 
     # Use charge per pulse as the stimulus intensity for the Naka-Rushton function
-    stim = charge_per_pulse
+    stim = Q
 
     # Compute the Naka-Rushton response
     response = r_max * (stim ** n) / (stim ** n + sigma ** n) + r_base
@@ -96,10 +101,10 @@ popt, pcov = curve_fit(
 # Extract fitted parameters
 r_max, sigma, n, r_base = popt
 print("Fitting parameters:")
-print(f"R_max (maximum response): {r_max}")
-print(f"Sigma (semi-saturation constant): {sigma}")
-print(f"n (steepness exponent): {n}")
-print(f"R_base (baseline response): {r_base}")
+print(f"R_max (maximum response): {r_max:.4f}")
+print(f"Sigma (semi-saturation constant): {sigma:.4f}")
+print(f"n (steepness exponent): {n:.4f}")
+print(f"R_base (baseline response): {r_base:.4f}")
 
 # Goodness of fit (R² equivalent)
 Y_pred = naka_rushton(X, *popt)
@@ -108,8 +113,14 @@ ss_residual = np.sum((Y - Y_pred) ** 2)
 r_squared = 1 - (ss_residual / ss_total)
 print(f"Goodness of fit (R²): {r_squared:.4f}")
 
-print("Predictions:", Y_pred)
-print("Actual:", Y.values)
+rounded_Y_pred = np.round(Y_pred.values, 2)
+print("Predictions:", rounded_Y_pred)
+rounded_Y = np.round(Y.values, 2)
+print("Actual:", rounded_Y)
+
+# Calculate percentage difference
+diff = Y_pred.values - Y.values
+print("Percentage Difference:", np.round(diff, 2))
 
 # Create a grid of duration and amplitude values
 d_values = np.linspace(10, 100, 100)  # range from 10 to 100 ms
@@ -200,8 +211,8 @@ for y, x_vals in extracted_x.items():
 # Scatter plot of the data points
 ax.scatter(df['pulse_duration'], df['pulse_amplitude'], c=df['valid'], cmap='Greys', vmin=0, vmax=100, s=300,
            marker='x')
-
+1
 # Show the plot
 plt.tight_layout()
 plt.show()
-# plt.savefig(f'naka-rushton single-factor fit NEW.png', dpi=300, bbox_inches='tight', transparent=True)
+# plt.savefig(f'Corrigenda 1D Naka Rushton Behavior.png', dpi=300, bbox_inches='tight', transparent=True)
