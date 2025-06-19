@@ -78,7 +78,7 @@ def naka_rushton(inputs, r_max, sigma, n, r_base):
     stim = Q
 
     # Compute the Naka-Rushton response
-    response = r_max * (stim ** n) / (stim ** n + sigma ** n) + r_base
+    response = r_base + r_max * (stim ** n) / (stim ** n + sigma ** n)
     return response
 
 # Prepare the data
@@ -144,7 +144,8 @@ plt.rcParams.update({
 contour = ax.contourf(D_grid, A_grid, Z, levels=20, cmap='viridis', vmax=100)
 ax.set_xticks(np.arange(10, 101, 10))
 cbar = plt.colorbar(contour, ax=ax)
-cbar.set_label('Percentage of Response\nto Visual Stimulus (%)', rotation=90)
+# cbar.set_label('Percentage of Response\nto Visual Stimulus (%)', rotation=90)
+cbar.set_label('Valid Response Rate (%)', rotation=90)
 
 # Set xtick labels fontsize
 for label in ax.get_xticklabels():
@@ -211,7 +212,7 @@ for y, x_vals in extracted_x.items():
 # Scatter plot of the data points
 ax.scatter(df['pulse_duration'], df['pulse_amplitude'], c=df['valid'], cmap='Greys', vmin=0, vmax=100, s=300,
            marker='x')
-1
+
 # Show the plot
 plt.tight_layout()
 plt.show()

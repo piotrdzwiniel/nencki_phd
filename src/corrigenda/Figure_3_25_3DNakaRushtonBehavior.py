@@ -90,7 +90,8 @@ def naka_rushton_3d(inputs, r_max, sigma_Q, n, sigma_A, m, delta, p, r_base):
     Dur_factor = (delta ** p) / (delta ** p + d ** p)
 
     # Combine all factors with baseline response
-    return r_base + r_max * NR_Q * NR_A * Dur_factor
+    response = r_base + r_max * NR_Q * NR_A * Dur_factor
+    return response
 
 
 """
@@ -242,5 +243,5 @@ ax.scatter(df['pulse_duration'], df['pulse_amplitude'], c=df['valid'], cmap='Gre
 
 # Show the plot
 plt.tight_layout()
-# plt.show()
-plt.savefig(f'Corrigenda 3D Naka Rushton Behavior.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()
+# plt.savefig(f'Corrigenda 3D Naka Rushton Behavior.png', dpi=300, bbox_inches='tight', transparent=True)
