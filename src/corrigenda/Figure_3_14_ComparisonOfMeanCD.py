@@ -38,5 +38,5 @@ plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07])
 
 plt.tight_layout()
 plt.subplots_adjust(wspace=0.3)
-plt.show()
 # plt.savefig('Corrigenda Figure 3-14A.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

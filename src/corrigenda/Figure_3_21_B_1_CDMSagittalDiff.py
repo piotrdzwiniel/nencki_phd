@@ -119,5 +119,5 @@ cbar.ax.yaxis.set_major_formatter(formatter)
 
 # Layout and save
 plt.tight_layout()
-plt.savefig('Corrigenda Figure 3-21B1.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig('Corrigenda Figure 3-21B1.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

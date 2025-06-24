@@ -49,5 +49,5 @@ plt.ylim(0, 3)
 plt.xlim(0, 1.05)
 
 plt.tight_layout()
-plt.savefig('Corrigenda Figure 3-6B BigHistagram.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig('Corrigenda Figure 3-6B BigHistagram.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

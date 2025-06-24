@@ -31,7 +31,6 @@ total_max = max(values_cond1.max(), values_cond2.max())
 values_cond1 = (values_cond1 - total_min) / (total_max - total_min)
 values_cond2 = (values_cond2 - total_min) / (total_max - total_min)
 
-
 # # Choosse values only between 0.6 and 1.0
 # values_cond1 = values_cond1[(values_cond1 >= 0.5) & (values_cond1 <= 1.0)]
 # values_cond2 = values_cond2[(values_cond2 >= 0.5) & (values_cond2 <= 1.0)]
@@ -75,5 +74,5 @@ plt.ylim(0, 1.1)
 
 plt.tight_layout()
 plt.legend(frameon=False, loc='lower right')
-plt.savefig(f'Corrigenda Figure 3-7B DifferentSurfaces.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig(f'Corrigenda Figure 3-7B DifferentSurfaces.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

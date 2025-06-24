@@ -65,5 +65,5 @@ cbar.set_label('EFM (V/m)', fontsize=fs)  # Increase font size for colorbar labe
 plt.tight_layout()
 
 # Save the figure
-plt.savefig('Corrigenda Figure 3-20A1.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig('Corrigenda Figure 3-20A1.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

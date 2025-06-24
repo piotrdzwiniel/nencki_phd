@@ -65,5 +65,5 @@ cbar.set_label('CDM (A/m2)', fontsize=fs)  # Increase font size for colorbar lab
 plt.tight_layout()
 
 # Save the figure
-plt.savefig('Corrigenda Figure 3-21A1.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig('Corrigenda Figure 3-21A1.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

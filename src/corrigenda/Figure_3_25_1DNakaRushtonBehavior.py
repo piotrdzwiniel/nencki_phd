@@ -215,5 +215,5 @@ ax.scatter(df['pulse_duration'], df['pulse_amplitude'], c=df['valid'], cmap='Gre
 
 # Show the plot
 plt.tight_layout()
-plt.show()
 # plt.savefig(f'Corrigenda 1D Naka Rushton Behavior.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

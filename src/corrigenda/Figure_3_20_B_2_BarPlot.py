@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Data
 regions = ['Eyeballs', 'Optic Nerve', 'Rest of the Brain']
@@ -43,5 +42,5 @@ plt.ylim(-0.06, 0.06)  # Adjusting y-limits for better visibility of fixed annot
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 
 plt.tight_layout()
-plt.savefig('Corrigenda Figure 3-20B2.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig('Corrigenda Figure 3-20B2.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

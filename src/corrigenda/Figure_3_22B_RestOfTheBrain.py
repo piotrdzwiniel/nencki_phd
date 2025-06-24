@@ -99,5 +99,5 @@ plt.ylim(0, 1.1)
 
 plt.tight_layout()
 # plt.legend(frameon=False, loc='lower right')
-plt.savefig(f'Corrigenda Figure 3-22B_{chosen_roi.replace(" ", "")}_CDM.png', dpi=300, bbox_inches='tight', transparent=True)
-# plt.show()
+# plt.savefig(f'Corrigenda Figure 3-22B_{chosen_roi.replace(" ", "")}_CDM.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()

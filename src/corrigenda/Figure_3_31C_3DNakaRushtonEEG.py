@@ -261,5 +261,5 @@ for y, x_vals in extracted_x.items():
 ##############################################################################################
 
 plt.tight_layout()
-# plt.show()
-plt.savefig(f'Corrigenda 3D Naka Rushton EEG.png', dpi=300, bbox_inches='tight', transparent=True)
+# plt.savefig(f'Corrigenda 3D Naka Rushton EEG.png', dpi=300, bbox_inches='tight', transparent=True)
+plt.show()
